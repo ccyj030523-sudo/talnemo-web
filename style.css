@@ -1,0 +1,535 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #030807;
+  color: #f3ff00;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* =====================
+   홈화면
+===================== */
+
+.home {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #030807;
+  overflow: hidden;
+
+  /* 홈화면 전체 크기 조절 */
+  --home-scale: 1.05;
+}
+
+/* 왼쪽 위 십자 표시 */
+.cross {
+  position: absolute;
+  top: calc(50% - 455px * var(--home-scale));
+  left: calc(50% - 390px * var(--home-scale));
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  transform: scale(var(--home-scale));
+  transform-origin: center center;
+}
+
+.cross::before,
+.cross::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.cross::before {
+  width: 70px;
+  height: 1px;
+  left: -14px;
+  top: 20px;
+}
+
+.cross::after {
+  width: 1px;
+  height: 70px;
+  left: 20px;
+  top: -14px;
+}
+
+/* 전체 작업 영역 */
+.stage {
+  position: absolute;
+  width: 760px;
+  height: 860px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--home-scale));
+  transform-origin: center center;
+}
+
+/* =====================
+   자 / 눈금
+===================== */
+
+.ruler {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* 상단 자 */
+.ruler-x {
+  top: 52px;
+  left: 0;
+  width: 720px;
+  height: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent 7px,
+    rgba(255, 255, 255, 0.7) 7px,
+    rgba(255, 255, 255, 0.7) 8px
+  );
+  background-size: 10px 10px;
+  background-position: bottom left;
+}
+
+.ruler-x span {
+  position: absolute;
+  top: -17px;
+}
+
+.ruler-x span:nth-child(1) { left: 52px; }
+.ruler-x span:nth-child(2) { left: 120px; }
+.ruler-x span:nth-child(3) { left: 190px; }
+.ruler-x span:nth-child(4) { left: 260px; }
+.ruler-x span:nth-child(5) { left: 330px; }
+.ruler-x span:nth-child(6) { left: 400px; }
+.ruler-x span:nth-child(7) { left: 470px; }
+.ruler-x span:nth-child(8) { left: 540px; }
+.ruler-x span:nth-child(9) { left: 610px; }
+.ruler-x span:nth-child(10) { left: 680px; }
+
+/* 왼쪽 자 */
+.ruler-y {
+  top: 52px;
+  left: 0;
+  width: 18px;
+  height: 840px;
+  border-left: 1px solid rgba(255, 255, 255, 0.7);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 7px,
+    rgba(255, 255, 255, 0.7) 7px,
+    rgba(255, 255, 255, 0.7) 8px
+  );
+  background-size: 10px 10px;
+  background-position: left top;
+}
+
+.ruler-y span {
+  position: absolute;
+  left: -38px;
+}
+
+.ruler-y span:nth-child(1) { top: 70px; }
+.ruler-y span:nth-child(2) { top: 140px; }
+.ruler-y span:nth-child(3) { top: 210px; }
+.ruler-y span:nth-child(4) { top: 280px; }
+.ruler-y span:nth-child(5) { top: 350px; }
+.ruler-y span:nth-child(6) { top: 420px; }
+.ruler-y span:nth-child(7) { top: 490px; }
+.ruler-y span:nth-child(8) { top: 560px; }
+.ruler-y span:nth-child(9) { top: 630px; }
+.ruler-y span:nth-child(10) { top: 700px; }
+.ruler-y span:nth-child(11) { top: 770px; }
+.ruler-y span:nth-child(12) { top: 835px; }
+.ruler-y span:nth-child(13) { top: 895px; }
+
+/* =====================
+   점선 기준선
+===================== */
+
+.guide {
+  position: absolute;
+  pointer-events: none;
+}
+
+.guide-v {
+  top: 62px;
+  height: 820px;
+  border-left: 2px dashed rgba(255, 255, 255, 0.55);
+}
+
+.guide-v-1 {
+  left: 135px;
+}
+
+.guide-v-2 {
+  left: 585px;
+}
+
+.guide-h {
+  left: 0;
+  width: 720px;
+  border-top: 2px dashed rgba(255, 255, 255, 0.55);
+}
+
+.guide-h-1 { top: 250px; }
+.guide-h-2 { top: 420px; }
+.guide-h-3 { top: 535px; }
+.guide-h-4 { top: 735px; }
+
+/* =====================
+   글자 전체
+===================== */
+
+.letter-wrap {
+  position: absolute;
+  left: 180px;
+  top: 215px;
+  width: 430px;
+  height: 560px;
+}
+
+.letter {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: visible;
+}
+
+.bar {
+  position: absolute;
+  display: block;
+  background: #f3ff00;
+}
+
+.hover-text {
+  position: absolute;
+  color: #f3ff00;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 0.2s ease;
+  z-index: 30;
+}
+
+.letter:hover .hover-text {
+  opacity: 1;
+}
+
+/* =====================
+   ㅌ
+===================== */
+
+.letter-t {
+  width: 180px;
+  height: 200px;
+  left: 0;
+  top: 0;
+}
+
+.t-top {
+  width: 180px;
+  height: 52px;
+  left: 0;
+  top: 0;
+}
+
+.t-mid {
+  width: 180px;
+  height: 48px;
+  left: 0;
+  top: 78px;
+}
+
+.t-bottom {
+  width: 180px;
+  height: 52px;
+  left: 0;
+  bottom: 0;
+}
+
+.t-left {
+  width: 60px;
+  height: 200px;
+  left: 0;
+  top: 0;
+}
+
+.text-history {
+  left: 0;
+  top: 212px;
+}
+
+/* =====================
+   ㅏ
+===================== */
+
+.letter-a {
+  width: 170px;
+  height: 430px;
+  left: 250px;
+  top: -40px;
+}
+
+.a-vertical {
+  width: 58px;
+  height: 430px;
+  left: 0;
+  top: 0;
+}
+
+.a-horizontal {
+  width: 120px;
+  height: 54px;
+  left: 0;
+  top: 105px;
+}
+
+.text-timeline {
+  left: 0;
+  top: -28px;
+}
+
+/* =====================
+   ㄹ
+===================== */
+
+.letter-r {
+  width: 210px;
+  height: 200px;
+  left: 195px;
+  top: 365px;
+}
+
+.r-top {
+  width: 210px;
+  height: 52px;
+  left: 0;
+  top: 0;
+}
+
+.r-mid {
+  width: 210px;
+  height: 50px;
+  left: 0;
+  top: 77px;
+}
+
+.r-bottom {
+  width: 210px;
+  height: 52px;
+  left: 0;
+  bottom: 0;
+}
+
+/* 위쪽 세로획은 오른쪽 */
+.r-left-top {
+  width: 60px;
+  height: 125px;
+  right: 0;
+  top: 0;
+}
+
+/* 아래쪽 세로획은 왼쪽 */
+.r-right-bottom {
+  width: 60px;
+  height: 123px;
+  left: 0;
+  bottom: 0;
+}
+
+.text-designer {
+  left: 0;
+  top: 215px;
+}
+
+/* =====================
+   역사 페이지
+===================== */
+
+.history-page {
+  width: 100vw;
+  height: 100vh;
+  background: #030807;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.history-stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #030807;
+}
+
+.history-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* history01 공병우 타자기 클릭 영역 */
+.typewriter-link {
+  position: absolute;
+  left: 18%;
+  top: 22%;
+  width: 58%;
+  height: 42%;
+  display: block;
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* history02 이미지 전체 클릭 영역 */
+.history-home-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.history-home-link .history-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =====================
+   타임라인 페이지
+===================== */
+
+.timeline-page {
+  width: 100vw;
+  height: 100vh;
+  background: #030807;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.timeline-stage {
+  position: relative;
+
+  /* 타임라인 이미지 비율 기준 */
+  width: min(100vw, calc(100vh * 2048 / 1447));
+  height: min(100vh, calc(100vw * 1447 / 2048));
+
+  background: #030807;
+}
+
+.timeline-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 숫자 클릭 영역 공통 */
+.timeline-number-link {
+  position: absolute;
+  display: block;
+  z-index: 20;
+  cursor: pointer;
+}
+
+/* timeline01: 1970s */
+.link-1970 {
+  left: 20%;
+  top: 58%;
+  width: 66%;
+  height: 32%;
+}
+
+/* timeline02: 1980s */
+.link-1980 {
+  left: 4%;
+  top: 58%;
+  width: 84%;
+  height: 34%;
+}
+
+/* timeline03: 1990-1994 */
+.link-1990 {
+  left: 0%;
+  top: 58%;
+  width: 96%;
+  height: 34%;
+}
+
+/* timeline04: 1975-1977 */
+.link-1975 {
+  left: 0%;
+  top: 58%;
+  width: 96%;
+  height: 34%;
+}
+
+/* =====================
+   반응형
+===================== */
+
+@media (max-height: 950px) {
+  .home {
+    --home-scale: 0.92;
+  }
+}
+
+@media (max-height: 800px) {
+  .home {
+    --home-scale: 0.78;
+  }
+}
+
+@media (max-width: 900px) {
+  .home {
+    --home-scale: 0.75;
+  }
+}
+
+@media (max-width: 600px) {
+  .home {
+    --home-scale: 0.55;
+  }
+
+  .cross {
+    display: none;
+  }
+}
+
+/* =====================
+   클릭 영역 확인용
+   필요할 때만 주석 해제
+===================== */
+
+/*
+.typewriter-link,
+.timeline-number-link {
+  background: rgba(243, 255, 0, 0.25);
+}
+*/
