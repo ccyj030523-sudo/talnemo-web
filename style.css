@@ -523,6 +523,94 @@ body {
 }
 
 /* =====================
+   모음 페이지
+===================== */
+
+/* =====================
+   모음 페이지
+===================== */
+
+.moeum-page {
+  width: 100vw;
+  height: 100vh;
+  background: #030807;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.moeum-stage {
+  position: relative;
+
+  /* 이미지 원본 비율 2048 x 1447 */
+  width: min(100vw, calc(100vh * 2048 / 1447));
+  height: min(100vh, calc(100vw * 1447 / 2048));
+
+  background: #030807;
+}
+
+.moeum-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 선명한 이미지 hover 영역 */
+.moeum-hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.moeum-hover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.moeum-hover:hover {
+  opacity: 1;
+}
+
+/* 1행 */
+.tile-01 { clip-path: inset(8.43% 82.47% 71.32% 7.08%); }
+.tile-02 { clip-path: inset(8.43% 67.43% 71.32% 22.12%); }
+.tile-03 { clip-path: inset(8.43% 52.39% 71.32% 37.16%); }
+.tile-04 { clip-path: inset(8.43% 37.35% 71.32% 52.20%); }
+.tile-05 { clip-path: inset(8.43% 22.31% 71.32% 67.24%); }
+.tile-06 { clip-path: inset(8.43% 7.28% 71.32% 82.28%); }
+
+/* 2행 */
+.tile-07 { clip-path: inset(29.44% 82.47% 50.31% 7.08%); }
+.tile-08 { clip-path: inset(29.44% 67.43% 50.31% 22.12%); }
+.tile-09 { clip-path: inset(29.44% 52.39% 50.31% 37.16%); }
+.tile-10 { clip-path: inset(29.44% 37.35% 50.31% 52.20%); }
+.tile-11 { clip-path: inset(29.44% 22.31% 50.31% 67.24%); }
+.tile-12 { clip-path: inset(29.44% 7.28% 50.31% 82.28%); }
+
+/* 3행 */
+.tile-13 { clip-path: inset(50.45% 82.47% 29.30% 7.08%); }
+.tile-14 { clip-path: inset(50.45% 67.43% 29.30% 22.12%); }
+.tile-15 { clip-path: inset(50.45% 52.39% 29.30% 37.16%); }
+.tile-16 { clip-path: inset(50.45% 37.35% 29.30% 52.20%); }
+.tile-17 { clip-path: inset(50.45% 22.31% 29.30% 67.24%); }
+.tile-18 { clip-path: inset(50.45% 7.28% 29.30% 82.28%); }
+
+/* 4행 */
+.tile-19 { clip-path: inset(71.46% 82.47% 8.29% 7.08%); }
+.tile-20 { clip-path: inset(71.46% 67.43% 8.29% 22.12%); }
+.tile-21 { clip-path: inset(71.46% 52.39% 8.29% 37.16%); }
+.tile-22 { clip-path: inset(71.46% 37.35% 8.29% 52.20%); }
+.tile-23 { clip-path: inset(71.46% 22.31% 8.29% 67.24%); }
+.tile-24 { clip-path: inset(71.46% 7.28% 8.29% 82.28%); }
+
+/* =====================
    클릭 영역 확인용
    필요할 때만 주석 해제
 ===================== */
