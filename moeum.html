@@ -14,7 +14,12 @@
       <!-- 기본 흐린 이미지 -->
       <img src="img/moeum.jpg" alt="모음 페이지" class="moeum-bg">
 
-      <!-- 마우스를 올렸을 때 선명하게 보일 영역들 -->
+      <!-- 클릭 후 전체 선명 이미지 -->
+      <div class="moeum-clear-full">
+        <img src="img/moeum2.jpg" alt="선명한 모음 페이지">
+      </div>
+
+      <!-- 마우스를 올렸을 때 부분적으로 선명해지는 영역 -->
       <div class="moeum-hover tile-01"><img src="img/moeum2.jpg" alt=""></div>
       <div class="moeum-hover tile-02"><img src="img/moeum2.jpg" alt=""></div>
       <div class="moeum-hover tile-03"><img src="img/moeum2.jpg" alt=""></div>
@@ -45,6 +50,17 @@
 
     </div>
   </main>
+
+  <script>
+    const moeumStage = document.querySelector('.moeum-stage');
+    const moeumTiles = document.querySelectorAll('.moeum-hover');
+
+    moeumTiles.forEach(function(tile) {
+      tile.addEventListener('click', function() {
+        moeumStage.classList.add('is-clear');
+      });
+    });
+  </script>
 
 </body>
 </html>
