@@ -704,6 +704,37 @@ body {
 .tile-24 { clip-path: inset(71.46% 7.28% 8.29% 82.28%); }
 
 /* =====================
+   디자이너 페이지
+===================== */
+
+.designer-page {
+  width: 100vw;
+  height: 100vh;
+  background: #030807;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.designer-stage {
+  position: relative;
+
+  /* 첨부 이미지 비율 기준: 2048 x 1447 */
+  width: min(100vw, calc(100vh * 2048 / 1447));
+  height: min(100vh, calc(100vw * 1447 / 2048));
+
+  background: #030807;
+}
+
+.designer-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* =====================
    클릭 영역 확인용
    필요할 때만 주석 해제
 ===================== */
