@@ -733,6 +733,14 @@ body {
   object-fit: contain;
   display: block;
 }
+/* 디자이너 페이지 여백 클릭 */
+.designer-page {
+  cursor: pointer;
+}
+
+.designer-stage {
+  cursor: default;
+}
 
 /* =====================
    클릭 영역 확인용

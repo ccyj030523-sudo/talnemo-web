@@ -16,5 +16,20 @@
     </div>
   </main>
 
+  <script>
+    const designerPage = document.querySelector('.designer-page');
+    const designerStage = document.querySelector('.designer-stage');
+
+    // 검정 배경 여백 클릭 시 홈화면으로 이동
+    designerPage.addEventListener('click', function() {
+      window.location.href = 'index.html';
+    });
+
+    // 이미지 영역 클릭 시에는 이동하지 않도록 막기
+    designerStage.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  </script>
+
 </body>
 </html>
