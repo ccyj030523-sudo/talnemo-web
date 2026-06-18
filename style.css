@@ -710,11 +710,12 @@ body {
 .designer-page {
   width: 100vw;
   height: 100vh;
-  background: #030807;
+  background: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .designer-stage {
@@ -724,7 +725,7 @@ body {
   width: min(100vw, calc(100vh * 2048 / 1447));
   height: min(100vh, calc(100vw * 1447 / 2048));
 
-  background: #030807;
+  background: #000000;
 }
 
 .designer-bg {
@@ -733,15 +734,12 @@ body {
   object-fit: contain;
   display: block;
 }
-/* 디자이너 페이지 여백 클릭 */
-.designer-page {
-  cursor: pointer;
+body {
+  background: #000000;
+  color: #f3ff00;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
-
-.designer-stage {
-  cursor: default;
-}
-
 /* =====================
    클릭 영역 확인용
    필요할 때만 주석 해제
