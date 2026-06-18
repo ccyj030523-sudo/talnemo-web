@@ -525,6 +525,21 @@ body {
 /* =====================
    모음 페이지
 ===================== */
+/* 검정색 배경 여백은 클릭 가능하게 */
+.moeum-page {
+  cursor: pointer;
+}
+
+/* 이미지 영역 안에서는 기본 커서 유지 */
+.moeum-stage {
+  cursor: default;
+}
+
+/* hover 가능한 이미지 영역은 클릭 커서 */
+.moeum-hover,
+.moeum-clear-full {
+  cursor: pointer;
+}
 
 .moeum-page {
   width: 100vw;

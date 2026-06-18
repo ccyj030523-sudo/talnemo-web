@@ -52,22 +52,34 @@
   </main>
 
   <script>
+  const moeumPage = document.querySelector('.moeum-page');
   const moeumStage = document.querySelector('.moeum-stage');
   const moeumTiles = document.querySelectorAll('.moeum-hover');
   const clearFull = document.querySelector('.moeum-clear-full');
 
-  // 모자이크 상태에서 각 이미지를 클릭하면 전체 선명하게
+  // 검정색 배경 여백 클릭 시 홈화면으로 이동
+  moeumPage.addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+
+  // 이미지 영역을 클릭했을 때는 홈화면으로 이동하지 않도록 막기
+  moeumStage.addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
+
+  // 모자이크 상태에서 각 이미지 클릭 시 전체 선명하게
   moeumTiles.forEach(function(tile) {
-    tile.addEventListener('click', function() {
+    tile.addEventListener('click', function(event) {
+      event.stopPropagation();
       moeumStage.classList.add('is-clear');
     });
   });
 
-  // 전체가 선명해진 상태에서 다시 클릭하면 모자이크 상태로 돌아가기
-  clearFull.addEventListener('click', function() {
+  // 전체 선명 상태에서 다시 이미지 클릭 시 모자이크 상태로 돌아가기
+  clearFull.addEventListener('click', function(event) {
+    event.stopPropagation();
     moeumStage.classList.remove('is-clear');
   });
 </script>
-
 </body>
 </html>
